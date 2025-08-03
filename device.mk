@@ -414,4 +414,4 @@ PRODUCT_PACKAGES += \
     firmware_WCNSS_qcom_cfg.ini_symlink
 
 # Inherit from the proprietary files makefile.
-$(call inherit-product, vendor/realme/RMX3371/RMX3371-vendor.mk)
+$(call inherit-product, vendor/oppo/findx3/findx3-vendor.mk)
