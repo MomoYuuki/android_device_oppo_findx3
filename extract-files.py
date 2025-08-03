@@ -26,7 +26,7 @@ from extract_utils.utils import (
 )
 
 namespace_imports = [
-    'device/realme/RMX3371',
+    'device/oppo/findx3',
     'hardware/oplus',
     'hardware/qcom-caf/sm8250',
     'hardware/qcom-caf/wlan',
@@ -93,14 +93,27 @@ def blob_fixup_nop_call(
 blob_fixups: blob_fixups_user_type = {
     'odm/bin/hw/vendor.oplus.hardware.biometrics.fingerprint@2.1-service': blob_fixup()
         .add_needed('libshims_fingerprint.oplus.so'),
-    ('odm/lib64/libCOppLceTonemapAPI.so', 'odm/lib64/libYTCommon.so', 'odm/lib64/libaps_frame_registration.so'): blob_fixup()
+    ('odm/lib64/libCOppLceTonemapAPI.so', 'odm/lib64/libYTCommon.so', 'odm/lib64/libaps_frame_registration.so', 'odm/lib64/libSuperRaw.so', 'odm/lib64/libPerfectColor.so'): blob_fixup()
         .replace_needed('libstdc++.so', 'libstdc++_vendor.so'),
     ('odm/lib64/mediadrm/libwvdrmengine.so', 'odm/lib64/libwvhidl.so'): blob_fixup()
         .add_needed('libcrypto_shim.so'),
     'product/app/PowerOffAlarm/PowerOffAlarm.apk': blob_fixup()
         .apktool_patch('blob-patches/PowerOffAlarm.patch'),
+    ('odm/etc/libdlbdsservice_v3_6_etc.so', 'odm/etc/libstagefright_soft_ddpdec_etc.so', 'odm/etc/libstagefrightdolby_etc.so', 'odm/lib64/libdlbdsservice_v3_6.so'): blob_fixup()
+        .replace_needed('libstagefright_foundation.so', 'libstagefright_foundation-v33.so'),
     'product/etc/sysconfig/com.android.hotwordenrollment.common.util.xml': blob_fixup()
         .regex_replace('/my_product', '/product'),
+    'system_ext/bin/wfdservice': blob_fixup()
+        .add_needed('libwfdservice_shim.so'),
+    'system_ext/lib/libwfdmmsrc_system.so': blob_fixup()
+        .add_needed('libgui_shim.so'),
+    'system_ext/lib/libwfdservice.so': blob_fixup()
+        .replace_needed('android.media.audio.common.types-V2-cpp.so', 'android.media.audio.common.types-V4-cpp.so')
+        .add_needed('libaudioclient_shim.so'),
+    'system_ext/lib64/libwfdnative.so': blob_fixup()
+        .replace_needed('android.hidl.base@1.0.so', 'libhidlbase.so')
+        .add_needed('libbinder_shim.so')
+        .add_needed('libinput_shim.so'),
     'vendor/etc/libnfc-nci.conf': blob_fixup()
         .regex_replace('NFC_DEBUG_ENABLED=1', 'NFC_DEBUG_ENABLED=0'),
     'vendor/etc/libnfc-nxp.conf': blob_fixup()
@@ -108,6 +121,10 @@ blob_fixups: blob_fixups_user_type = {
         .regex_replace('NFC_DEBUG_ENABLED=1', 'NFC_DEBUG_ENABLED=0'),
     'vendor/lib64/hw/camera.qcom.so': blob_fixup()
         .add_needed('libcamera_metadata_shim.so'),
+    'vendor/lib64/vendor.qti.hardware.camera.postproc@1.0-service-impl.so': blob_fixup()
+        .call(blob_fixup_nop_call, 'bl', '__cfi_check', '_ZN7android8hardware22configureRpcThreadpoolEmb@plt'),
+    'odm/lib64/libAlgoProcess.so': blob_fixup()
+        .replace_needed('android.hardware.graphics.common-V1-ndk_platform.so', 'android.hardware.graphics.common-V6-ndk.so'),
     'odm/lib64/libOGLManager.so': blob_fixup()
         .clear_symbol_version('AHardwareBuffer_allocate')
         .clear_symbol_version('AHardwareBuffer_describe')
@@ -127,10 +144,13 @@ blob_fixups: blob_fixups_user_type = {
         .clear_symbol_version('remote_handle_open')
         .clear_symbol_version('remote_register_buf_attr')
         .clear_symbol_version('remote_register_buf'),
-    'vendor/lib64/vendor.qti.hardware.camera.postproc@1.0-service-impl.so': blob_fixup()
-        .call(blob_fixup_nop_call, 'bl', '__cfi_check', '_ZN7android8hardware22configureRpcThreadpoolEmb@plt'),
-    'odm/lib64/libAlgoProcess.so': blob_fixup()
-        .replace_needed('android.hardware.graphics.common-V1-ndk_platform.so', 'android.hardware.graphics.common-V6-ndk.so'),
+    'odm/lib64/libarcsoft_portrait_super_night_raw.so': blob_fixup()
+        .clear_symbol_version('remote_handle64_close')
+        .clear_symbol_version('remote_handle64_invoke')
+        .clear_symbol_version('remote_handle64_open')
+        .clear_symbol_version('rpcmem_alloc')
+        .clear_symbol_version('rpcmem_to_fd')
+        .clear_symbol_version('rpcmem_free'),
 }  # fmt: skip
 
 module = ExtractUtilsModule(
