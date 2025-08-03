@@ -134,8 +134,8 @@ blob_fixups: blob_fixups_user_type = {
 }  # fmt: skip
 
 module = ExtractUtilsModule(
-    'RMX3371',
-    'realme',
+    'findx3',
+    'oppo',
     blob_fixups=blob_fixups,
     lib_fixups=lib_fixups,
     namespace_imports=namespace_imports,
