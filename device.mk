@@ -95,7 +95,14 @@ PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.camera.raw.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.camera.raw.xml
 
 PRODUCT_PACKAGES += \
+    libcamera_metadata_shim \
     libstdc++_vendor
+
+# Camera vendor symlinks
+PRODUCT_PACKAGES += \
+    lib64_com.qti.stats.haf.so_symlink \
+    lib64_com.qti.stats.pdlib.so_symlink \
+    lib64_libipebpsstriping.so_symlink
 
 # Dalvik
 $(call inherit-product, frameworks/native/build/phone-xhdpi-6144-dalvik-heap.mk)
