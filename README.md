@@ -1,16 +1,27 @@
+# Device Tree for the Oppo Find X3
+
+The Oppo Find X3 (diy codenamed _"findx3"_) is a high-end smartphone from oppo. It was announced and released in September 2021.
+
 ## Device specifications
 
-| Device                  | Realme GT Neo 3T (5G)                                        |
-| ----------------------- | :---------------------------------------------------------- |
-| SoC                     | Qualcomm SM8250-AC Snapdragon 870 5G (7 nm)                 |
-| CPU                     | Octa-core (1x3.2 GHz Kryo 585 & 3x2.42 GHz Kryo 585 & 4x1.80 GHz Kryo 585)|
-| GPU                     | Adreno 650                                                  |
-| Shipped Android version | Android 12.0 with Realme UI 3.0                             |
-| Memory                  | 6/8/12 GB RAM                                                 |
-| Storage                 | (128/256) / 256 GB                                          |
-| Battery                 | Non-removable Li-Po 5000 mAh                                |
-| Display                 | 1080 x 2400 pixels, 20:9 ratio, 6.62 inches AMOLED (~398 ppi density) |
-
+| Feature               | Specification                                                                 |
+| :---------------------| :-----------------------------------------------------------------------------|
+| Chipset               | Qualcomm SM8250-AC Snapdragon 870 5G (7 nm)                                   |
+| CPU                   | Octa-core Kryo 585 (1x3.2 GHz Prime, 3x2.42 GHz Gold & 4x1.80 GHz Silver)     |
+| GPU                   | Adreno 650                                                                    |
+| Memory                | 8 GB LPDDR4X RAM                                                           |
+| Shipped OS            | Android 11.0 (CoolorOS V11.2)                                                 |
+| Storage               | 128/256 GB UFS 3.1                                                            |
+| SIM                   | Dual SIM (Nano-SIM, dual stand-by)                                            |
+| Battery               | 4500 mAh Li-Po (non-removable), 65W fast charge , 30W wireless                |
+| Dimensions            | 163.6 x 74 x 8.3 mm (6.44 x 2.91 x 0.33 in)                                   |
+| Display               | 6.7 inch, 1440 x 3216 (20:9 ratio) AMOLED, 120Hz, HDR10+                      |
+| Rear Camera           | 50MP (wide) / 13MP (telephoto) / 50MP (ultrawide)  /  3MP (microscope)        |
+| Front Camera          | 32MP (wide)                                                                   |
+| Sensors               | Fingerprint (under display, optical), accelerometer, gyro, proximity          |
 
 ## Device picture
-![Realme GT Neo 3T](https://fdn2.gsmarena.com/vv/pics/realme/neo-3t-1.jpg "Realme GT Neo 3T")
+
+![Oppo Find X3](https://www.91-img.com/gallery_images_uploads/d/e/def4d6bbb96ef7ff675fc9dd07e982b961b62de4.jpg)
+
+Copyright (C) 2024 The LineageOS Project.
